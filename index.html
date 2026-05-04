@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AL-SHAM | Middle Eastern Food - Philadelphia</title>
+  <meta name="description" content="AL-SHAM Middle Eastern Food. Authentic flavors at 10 locations across the Philadelphia area. Order online or visit us today!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: #5D3A29;
+      background: #FFFFFF;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ============================================================
+       UTILITY
+       ============================================================ */
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Lobster', cursive;
+      font-size: 2.4rem;
+      color: #F47B20;
+      text-align: center;
+      margin-bottom: 0.3rem;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #8a6e5e;
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ============================================================
+       HEADER / NAV
+       ============================================================ */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 20px rgba(93,58,41,0.08);
+      transition: box-shadow 0.3s;
+    }
+    .header.scrolled { box-shadow: 0 4px 30px rgba(93,58,41,0.15); }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+    .logo {
+      font-family: 'Lobster', cursive;
+      font-size: 1.6rem;
+      color: #F47B20;
+      white-space: nowrap;
+    }
+    .logo span { color: #5D3A29; font-size: 0.85rem; display: block; font-family: 'Nunito', sans-serif; font-weight: 600; margin-top: -4px; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-weight: 700;
+      font-size: 0.95rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: #F47B20;
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: #F47B20; }
+    .nav-links a:hover::after { width: 100%; }
+    .btn-order {
+      background: #F47B20;
+      color: #fff !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-order:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(244,123,32,0.4);
+      background: #e06a10;
+    }
+    .btn-order::after { display: none; }
+
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #5D3A29;
+      cursor: pointer;
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #FFFAF5 0%, #fff 50%, #FFFAF5 100%);
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(244,123,32,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-text h1 {
+      font-family: 'Lobster', cursive;
+      font-size: 3.2rem;
+      color: #F47B20;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .hero-text h1 em {
+      font-style: normal;
+      color: #5D3A29;
+    }
+    .hero-text p {
+      font-size: 1.15rem;
+      color: #7a5c4a;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Nunito', sans-serif;
+    }
+    .hero-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+    }
+    .hero-btn.primary {
+      background: #F47B20;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(244,123,32,0.3);
+    }
+    .hero-btn.primary:hover { box-shadow: 0 8px 25px rgba(244,123,32,0.45); }
+    .hero-btn.doordash {
+      background: #FF3008;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(255,48,8,0.25);
+    }
+    .hero-btn.doordash:hover { box-shadow: 0 8px 25px rgba(255,48,8,0.4); }
+    .hero-btn.ubereats {
+      background: #000;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .hero-btn.ubereats:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.35); }
+
+    .hero-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-image-wrapper {
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(244,123,32,0.2);
+      border: 6px solid rgba(244,123,32,0.15);
+      position: relative;
+    }
+    .hero-image-wrapper img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 30px; right: 10px;
+      background: #F47B20;
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 20px rgba(244,123,32,0.4);
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ============================================================
+       FLOATING SOCIAL
+       ============================================================ */
+    .social-float {
+      position: fixed;
+      right: 0; top: 50%;
+      transform: translateY(-50%);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .social-float a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px; height: 48px;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: transform 0.3s, width 0.3s;
+      border-radius: 8px 0 0 8px;
+    }
+    .social-float a:first-child { background: #1877F2; margin-bottom: 2px; }
+    .social-float a:last-child { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-float a:hover {
+      transform: translateX(-6px);
+      width: 54px;
+    }
+
+    /* ============================================================
+       ABOUT
+       ============================================================ */
+    .about {
+      padding: 5rem 0;
+      background: #FFFAF5;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .about-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(93,58,41,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .about-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px rgba(93,58,41,0.12);
+    }
+    .about-card .icon {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: rgba(244,123,32,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-size: 1.6rem;
+      color: #F47B20;
+    }
+    .about-card h3 {
+      font-family: 'Lobster', cursive;
+      font-size: 1.3rem;
+      color: #F47B20;
+      margin-bottom: 0.5rem;
+    }
+    .about-card p { font-size: 0.95rem; color: #8a6e5e; }
+
+    /* ============================================================
+       MENU HIGHLIGHTS
+       ============================================================ */
+    .menu-section {
+      padding: 5rem 0;
+      background: #fff;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .menu-card {
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(93,58,41,0.07);
+      transition: transform 0.35s, box-shadow 0.35s;
+    }
+    .menu-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(93,58,41,0.14);
+    }
+    .menu-card-img {
+      width: 100%; height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .menu-card:hover .menu-card-img {
+      transform: scale(1.08);
+    }
+    .menu-card-img-wrapper { overflow: hidden; }
+    .menu-card-body { padding: 1.3rem 1.5rem; }
+    .menu-card-body h3 {
+      font-family: 'Lobster', cursive;
+      color: #F47B20;
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .menu-card-body p { font-size: 0.9rem; color: #8a6e5e; }
+
+    /* ============================================================
+       INSTAGRAM GALLERY
+       ============================================================ */
+    .gallery {
+      padding: 5rem 0;
+      background: #FFFAF5;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(244,123,32,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-overlay i { color: #fff; font-size: 2rem; }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    /* ============================================================
+       LOCATIONS
+       ============================================================ */
+    .locations {
+      padding: 5rem 0;
+      background: #fff;
+    }
+    .locations-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .location-list {
+      max-height: 600px;
+      overflow-y: auto;
+      padding-right: 1rem;
+    }
+    .location-list::-webkit-scrollbar { width: 6px; }
+    .location-list::-webkit-scrollbar-thumb { background: #F47B20; border-radius: 10px; }
+    .location-card {
+      background: #FFFAF5;
+      border-radius: 16px;
+      padding: 1.3rem 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #F47B20;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .location-card:hover {
+      transform: translateX(6px);
+      box-shadow: 0 6px 20px rgba(244,123,32,0.12);
+    }
+    .location-card.active {
+      background: #fff;
+      box-shadow: 0 6px 25px rgba(244,123,32,0.15);
+      border-left-color: #e06a10;
+    }
+    .location-card h4 {
+      font-family: 'Lobster', cursive;
+      color: #F47B20;
+      font-size: 1.15rem;
+      margin-bottom: 0.3rem;
+    }
+    .location-card p {
+      font-size: 0.88rem;
+      color: #8a6e5e;
+      margin-bottom: 0.15rem;
+    }
+    .location-card p i { width: 18px; color: #F47B20; }
+    .location-card .hours { font-weight: 600; color: #5D3A29; }
+    .map-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 25px rgba(93,58,41,0.1);
+      min-height: 400px;
+      position: relative;
+      background: #eee;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 600px;
+      border: 0;
+    }
+
+    /* ============================================================
+       CTA BANNER
+       ============================================================ */
+    .cta {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, #F47B20, #e06a10);
+      text-align: center;
+      color: #fff;
+    }
+    .cta h2 {
+      font-family: 'Lobster', cursive;
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .cta p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; }
+    .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Nunito', sans-serif;
+    }
+    .cta-btn:hover { transform: translateY(-3px) scale(1.05); }
+    .cta-btn.white {
+      background: #fff;
+      color: #F47B20;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .cta-btn.white:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.25); }
+    .cta-btn.outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+    .cta-btn.outline:hover { background: rgba(255,255,255,0.15); }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      background: #5D3A29;
+      color: #e8d5c4;
+      padding: 3rem 0 1.5rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer h3 {
+      font-family: 'Lobster', cursive;
+      color: #F47B20;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .footer p, .footer a { font-size: 0.9rem; color: #c9b09e; }
+    .footer a:hover { color: #F47B20; }
+    .footer ul li { margin-bottom: 0.5rem; }
+    .footer ul li a { transition: color 0.3s, padding-left 0.3s; }
+    .footer ul li a:hover { padding-left: 6px; color: #F47B20; }
+    .footer-social { display: flex; gap: 0.8rem; margin-top: 1rem; }
+    .footer-social a {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(244,123,32,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #F47B20;
+      font-size: 1rem;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .footer-social a:hover {
+      background: #F47B20;
+      color: #fff;
+      transform: translateY(-3px);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #a08979;
+    }
+
+    /* ============================================================
+       SCROLL ANIMATIONS
+       ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       MOBILE RESPONSIVE
+       ============================================================ */
+    @media (max-width: 992px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; }
+      .hero-text p { margin: 0 auto 2rem; }
+      .hero-buttons { justify-content: center; }
+      .hero-image { margin-top: 2rem; }
+      .hero-image-wrapper { width: 300px; height: 300px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .locations-wrapper { grid-template-columns: 1fr; }
+      .map-container iframe { min-height: 350px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: #fff;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        transition: right 0.4s ease;
+        z-index: 1001;
+      }
+      .nav-links.open { right: 0; }
+      .menu-toggle { display: block; z-index: 1002; }
+      .menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.4);
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .menu-overlay.open { opacity: 1; pointer-events: all; }
+
+      .hero-text h1 { font-size: 2.4rem; }
+      .hero-btn { font-size: 0.85rem; padding: 0.7rem 1.2rem; }
+      .section-title { font-size: 2rem; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .social-float a { width: 40px; height: 40px; font-size: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-text h1 { font-size: 2rem; }
+      .hero-image-wrapper { width: 240px; height: 240px; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .hero-btn { width: 100%; justify-content: center; }
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header" id="header">
+    <div class="container nav">
+      <a href="#" class="logo">
+        AL-SHAM
+        <span>Middle Eastern Food</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#locations">Locations</a>
+        <a href="#menu">Menu</a>
+        <a href="#" class="btn-order">Order Online</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+  </header>
+
+  <!-- ==================== FLOATING SOCIAL ==================== -->
+  <div class="social-float">
+    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  </div>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Authentic Flavors,<br><em>Straight from the Heart</em></h1>
+          <p>Experience the rich and aromatic tastes of the Middle East. Fresh ingredients, family recipes, and ten locations across the Philadelphia area to serve you.</p>
+          <div class="hero-buttons">
+            <a href="#locations" class="hero-btn primary">
+              <i class="fas fa-map-marker-alt"></i> Find A Location
+            </a>
+            <a href="https://www.doordash.com" target="_blank" rel="noopener" class="hero-btn doordash">
+              <i class="fas fa-motorcycle"></i> Order DoorDash
+            </a>
+            <a href="https://www.ubereats.com" target="_blank" rel="noopener" class="hero-btn ubereats">
+              <i class="fa-brands fa-uber"></i> Uber Eats
+            </a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?w=800&q=80" alt="Delicious Middle Eastern platter" />
+          </div>
+          <div class="hero-badge"><i class="fas fa-star"></i> 10 Locations in Philly!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title reveal">Why AL-SHAM?</h2>
+      <p class="section-subtitle reveal">A taste of home in every bite</p>
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <div class="icon"><i class="fas fa-leaf"></i></div>
+          <h3>Fresh Ingredients</h3>
+          <p>We source the freshest produce and premium meats daily to bring you meals bursting with authentic flavor.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="icon"><i class="fas fa-utensils"></i></div>
+          <h3>Family Recipes</h3>
+          <p>Handed down through generations, our recipes capture the true essence of Middle Eastern home cooking.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="icon"><i class="fas fa-truck"></i></div>
+          <h3>Fast Delivery</h3>
+          <p>Order through DoorDash or Uber Eats and enjoy our food at your doorstep in minutes. Hot and fresh, always.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MENU HIGHLIGHTS ==================== -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <h2 class="section-title reveal">Our Menu Favorites</h2>
+      <p class="section-subtitle reveal">Crafted with love, served with pride</p>
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-img-wrapper">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&q=80" alt="Chicken Shawarma" />
+          </div>
+          <div class="menu-card-body">
+            <h3>Chicken Shawarma</h3>
+            <p>Marinated and slow-roasted on a vertical spit, sliced thin and served with garlic sauce and pickles.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img-wrapper">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1540914124281-342587941389?w=600&q=80" alt="Falafel Plate" />
+          </div>
+          <div class="menu-card-body">
+            <h3>Falafel Plate</h3>
+            <p>Crispy on the outside, fluffy on the inside. Served with hummus, salad, and warm pita bread.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img-wrapper">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=80" alt="Mixed Grill" />
+          </div>
+          <div class="menu-card-body">
+            <h3>Mixed Grill</h3>
+            <p>A generous platter of lamb kebab, chicken tawook, and kofta with grilled vegetables and rice.</p>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img-wrapper">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1575024357670-2b5164f470c3?w=600&q=80" alt="Hummus & Pita" />
+          </div>
+          <div class="menu-card-body">
+            <h3>Hummus & Pita</h3>
+            <p>Creamy, smooth hummus drizzled with olive oil, served with freshly baked pita bread.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INSTAGRAM GALLERY ==================== -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-title reveal"><i class="fab fa-instagram"></i> Fresh from our Kitchen</h2>
+      <p class="section-subtitle reveal">Follow us on Instagram @alshamphilly</p>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80" alt="Grilled kebabs" />
+          <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Fresh baked flatbread" />
+          <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="Colorful mezze platter" />
+          <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1606491956689-2ea866880049?w=600&q=80" alt="Middle Eastern spices" />
+          <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="BBQ chicken" />
+          <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=80" alt="Tea and dessert" />
+          <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOCATIONS ==================== -->
+  <section class="locations" id="locations">
+    <div class="container">
+      <h2 class="section-title reveal">Our 10 Locations</h2>
+      <p class="section-subtitle reveal">Find the AL-SHAM nearest you in the Philadelphia area</p>
+      <div class="locations-wrapper reveal">
+        <div class="location-list" id="locationList">
+          <!-- Populated by JS -->
+        </div>
+        <div class="map-container" id="mapContainer">
+          <iframe
+            id="locationMap"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Philadelphia+PA&zoom=11"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="cta">
+    <div class="container reveal">
+      <h2>Hungry? Order Now!</h2>
+      <p>Skip the wait &mdash; get your favorites delivered to your door or pick up in store.</p>
+      <div class="cta-buttons">
+        <a href="#locations" class="cta-btn white"><i class="fas fa-store"></i> Find a Location</a>
+        <a href="https://www.doordash.com" target="_blank" rel="noopener" class="cta-btn outline"><i class="fas fa-motorcycle"></i> DoorDash</a>
+        <a href="https://www.ubereats.com" target="_blank" rel="noopener" class="cta-btn outline"><i class="fa-brands fa-uber"></i> Uber Eats</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>AL-SHAM</h3>
+          <p>Bringing the authentic flavors of the Middle East to the Philadelphia area since day one. Fresh ingredients, family recipes, and a passion for great food.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#locations">Locations</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Order Online</h3>
+          <ul>
+            <li><a href="https://www.doordash.com" target="_blank" rel="noopener"><i class="fas fa-motorcycle"></i> DoorDash</a></li>
+            <li><a href="https://www.ubereats.com" target="_blank" rel="noopener"><i class="fa-brands fa-uber"></i> Uber Eats</a></li>
+            <li><a href="#locations"><i class="fas fa-store"></i> In-Store Pickup</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:info@alshamfood.com"><i class="fas fa-envelope"></i> info@alshamfood.com</a></li>
+            <li><a href="tel:+12155551234"><i class="fas fa-phone"></i> (215) 555-1234</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 AL-SHAM Middle Eastern Food. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    /* ---- Location Data ---- */
+    const locations = [
+      { name: "AL-SHAM - Center City", address: "1234 Walnut St, Philadelphia, PA 19107", phone: "(215) 555-0101", hours: "10 AM - 11 PM Daily", query: "1234+Walnut+St+Philadelphia+PA" },
+      { name: "AL-SHAM - University City", address: "3600 Chestnut St, Philadelphia, PA 19104", phone: "(215) 555-0102", hours: "10 AM - 12 AM Daily", query: "3600+Chestnut+St+Philadelphia+PA" },
+      { name: "AL-SHAM - North Philly", address: "2501 N Broad St, Philadelphia, PA 19132", phone: "(215) 555-0103", hours: "10 AM - 10 PM Daily", query: "2501+N+Broad+St+Philadelphia+PA" },
+      { name: "AL-SHAM - South Philly", address: "1800 S 9th St, Philadelphia, PA 19148", phone: "(215) 555-0104", hours: "10 AM - 11 PM Daily", query: "1800+S+9th+St+Philadelphia+PA" },
+      { name: "AL-SHAM - Manayunk", address: "4300 Main St, Philadelphia, PA 19127", phone: "(215) 555-0105", hours: "11 AM - 10 PM Daily", query: "4300+Main+St+Manayunk+Philadelphia+PA" },
+      { name: "AL-SHAM - Germantown", address: "5500 Germantown Ave, Philadelphia, PA 19144", phone: "(215) 555-0106", hours: "10 AM - 10 PM Daily", query: "5500+Germantown+Ave+Philadelphia+PA" },
+      { name: "AL-SHAM - Northeast Philly", address: "7100 Bustleton Ave, Philadelphia, PA 19149", phone: "(215) 555-0107", hours: "10 AM - 11 PM Daily", query: "7100+Bustleton+Ave+Philadelphia+PA" },
+      { name: "AL-SHAM - Upper Darby", address: "69 S 69th St, Upper Darby, PA 19082", phone: "(610) 555-0108", hours: "10 AM - 10 PM Daily", query: "69+S+69th+St+Upper+Darby+PA" },
+      { name: "AL-SHAM - Cheltenham", address: "1000 Easton Rd, Cheltenham, PA 19012", phone: "(215) 555-0109", hours: "10 AM - 10 PM Daily", query: "1000+Easton+Rd+Cheltenham+PA" },
+      { name: "AL-SHAM - King of Prussia", address: "200 N Gulph Rd, King of Prussia, PA 19406", phone: "(610) 555-0110", hours: "11 AM - 11 PM Daily", query: "200+N+Gulph+Rd+King+of+Prussia+PA" }
+    ];
+
+    /* ---- Render Location Cards ---- */
+    const locationList = document.getElementById('locationList');
+    const locationMap = document.getElementById('locationMap');
+
+    locations.forEach((loc, i) => {
+      const card = document.createElement('div');
+      card.className = 'location-card' + (i === 0 ? ' active' : '');
+      card.innerHTML = `
+        <h4>${loc.name}</h4>
+        <p><i class="fas fa-map-marker-alt"></i> ${loc.address}</p>
+        <p><i class="fas fa-phone"></i> <a href="tel:${loc.phone.replace(/\D/g,'')}">${loc.phone}</a></p>
+        <p class="hours"><i class="fas fa-clock"></i> ${loc.hours}</p>
+      `;
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.location-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        locationMap.src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${loc.query}&zoom=15`;
+      });
+      locationList.appendChild(card);
+    });
+
+    /* ---- Sticky Header Shadow ---- */
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    /* ---- Mobile Menu ---- */
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function toggleMenu() {
+      navLinks.classList.toggle('open');
+      menuOverlay.classList.toggle('open');
+      const icon = menuToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    /* ---- Scroll Reveal ---- */
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
