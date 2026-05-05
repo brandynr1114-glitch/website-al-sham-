@@ -381,6 +381,64 @@
     .gallery-item:hover .gallery-overlay { opacity: 1; }
 
     /* ============================================================
+       REVIEWS
+       ============================================================ */
+    .reviews {
+      padding: 5rem 0;
+      background: #fff;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .review-card {
+      background: #FFFAF5;
+      border-radius: 20px;
+      padding: 2rem 2rem 1.5rem;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(93,58,41,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .review-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 35px rgba(93,58,41,0.14);
+    }
+    .review-card .quote-icon {
+      font-size: 2.5rem;
+      color: rgba(244,123,32,0.2);
+      position: absolute;
+      top: 1rem; left: 1.5rem;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .review-card .stars {
+      color: #F47B20;
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 2px;
+    }
+    .review-card blockquote {
+      font-size: 0.95rem;
+      color: #5D3A29;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+    .review-card .reviewer {
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: #F47B20;
+    }
+    .review-card .reviewer span {
+      display: block;
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: #8a6e5e;
+      margin-top: 2px;
+    }
+
+    /* ============================================================
        LOCATIONS
        ============================================================ */
     .locations {
@@ -650,10 +708,10 @@
             <a href="#locations" class="hero-btn primary">
               <i class="fas fa-map-marker-alt"></i> Find A Location
             </a>
-            <a href="https://www.doordash.com" target="_blank" rel="noopener" class="hero-btn doordash">
+            <a href="https://www.doordash.com/store/al-sham-restaurant-philadelphia-318905/1800310/?cursor=eyJzZWFyY2hfaXRlbV9jYXJvdXNlbF9jdXJzb3IiOnsicXVlcnkiOiJhbCBzaGFtICIsIml0ZW1faWRzIjpbXSwic2VhcmNoX3Rlcm0iOiJhbCBzaGFtIiwidmVydGljYWxfaWQiOi05OTksInZlcnRpY2FsX25hbWUiOiJhbGwiLCJxdWVyeV9pbnRlbnQiOiJTVE9SRV9SWCJ9LCJzdG9yZV9wcmltYXJ5X3ZlcnRpY2FsX2lkcyI6WzEwMDMyMiwxMDAzMzIsMTAwMzMzLDE3NywxNzgsMTgxLDE5MywxOTUsMjg0XX0=&amp;pickup=false" target="_blank" rel="noopener" class="hero-btn doordash">
               <i class="fas fa-motorcycle"></i> Order DoorDash
             </a>
-            <a href="https://www.ubereats.com" target="_blank" rel="noopener" class="hero-btn ubereats">
+            <a href="https://www.ubereats.com/store/al-sham-restaurant-1-philadelphia/1e8up_MiRG2QlYUYGpCrVw?diningMode=DELIVERY&amp;surfaceName=https://www.ubereats.com/store/al-sham-restaurant-2/W6rDxpqeTqaWyMvWP6rizg?diningMode=DELIVERY&amp;ps=1&amp;surfaceName=" target="_blank" rel="noopener" class="hero-btn ubereats">
               <i class="fa-brands fa-uber"></i> Uber Eats
             </a>
           </div>
@@ -773,6 +831,34 @@
     </div>
   </section>
 
+  <!-- ==================== CUSTOMER REVIEWS ==================== -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <h2 class="section-title reveal">What Our Customers Say</h2>
+      <p class="section-subtitle reveal">Real reviews from real food lovers</p>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="quote-icon">&ldquo;</div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>Chicken shawarma flavorful and well cooked, sauces great, and overall very satisfied with the meal. Fries crispy brown and quite large. Hummus thick and perfectly made.</blockquote>
+          <div class="reviewer">Muhammad S.<span>Verified Customer</span></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="quote-icon">&ldquo;</div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>Love this place! I was looking for some fresh halal food and this was the perfect spot to get it! The customer service was outstanding, the food was 10/10 I would highly recommend.</blockquote>
+          <div class="reviewer">Happy Customer<span>Verified Customer</span></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="quote-icon">&ldquo;</div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>One of my go to restaurants, good, fast, great pricing and clean.</blockquote>
+          <div class="reviewer">Nurijon<span>Verified Customer</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== LOCATIONS ==================== -->
   <section class="locations" id="locations">
     <div class="container">
@@ -802,8 +888,8 @@
       <p>Skip the wait &mdash; get your favorites delivered to your door or pick up in store.</p>
       <div class="cta-buttons">
         <a href="#locations" class="cta-btn white"><i class="fas fa-store"></i> Find a Location</a>
-        <a href="https://www.doordash.com" target="_blank" rel="noopener" class="cta-btn outline"><i class="fas fa-motorcycle"></i> DoorDash</a>
-        <a href="https://www.ubereats.com" target="_blank" rel="noopener" class="cta-btn outline"><i class="fa-brands fa-uber"></i> Uber Eats</a>
+        <a href="https://www.doordash.com/store/al-sham-restaurant-philadelphia-318905/1800310/?cursor=eyJzZWFyY2hfaXRlbV9jYXJvdXNlbF9jdXJzb3IiOnsicXVlcnkiOiJhbCBzaGFtICIsIml0ZW1faWRzIjpbXSwic2VhcmNoX3Rlcm0iOiJhbCBzaGFtIiwidmVydGljYWxfaWQiOi05OTksInZlcnRpY2FsX25hbWUiOiJhbGwiLCJxdWVyeV9pbnRlbnQiOiJTVE9SRV9SWCJ9LCJzdG9yZV9wcmltYXJ5X3ZlcnRpY2FsX2lkcyI6WzEwMDMyMiwxMDAzMzIsMTAwMzMzLDE3NywxNzgsMTgxLDE5MywxOTUsMjg0XX0=&amp;pickup=false" target="_blank" rel="noopener" class="cta-btn outline"><i class="fas fa-motorcycle"></i> DoorDash</a>
+        <a href="https://www.ubereats.com/store/al-sham-restaurant-1-philadelphia/1e8up_MiRG2QlYUYGpCrVw?diningMode=DELIVERY&amp;surfaceName=https://www.ubereats.com/store/al-sham-restaurant-2/W6rDxpqeTqaWyMvWP6rizg?diningMode=DELIVERY&amp;ps=1&amp;surfaceName=" target="_blank" rel="noopener" class="cta-btn outline"><i class="fa-brands fa-uber"></i> Uber Eats</a>
       </div>
     </div>
   </section>
@@ -833,8 +919,8 @@
         <div>
           <h3>Order Online</h3>
           <ul>
-            <li><a href="https://www.doordash.com" target="_blank" rel="noopener"><i class="fas fa-motorcycle"></i> DoorDash</a></li>
-            <li><a href="https://www.ubereats.com" target="_blank" rel="noopener"><i class="fa-brands fa-uber"></i> Uber Eats</a></li>
+            <li><a href="https://www.doordash.com/store/al-sham-restaurant-philadelphia-318905/1800310/?cursor=eyJzZWFyY2hfaXRlbV9jYXJvdXNlbF9jdXJzb3IiOnsicXVlcnkiOiJhbCBzaGFtICIsIml0ZW1faWRzIjpbXSwic2VhcmNoX3Rlcm0iOiJhbCBzaGFtIiwidmVydGljYWxfaWQiOi05OTksInZlcnRpY2FsX25hbWUiOiJhbGwiLCJxdWVyeV9pbnRlbnQiOiJTVE9SRV9SWCJ9LCJzdG9yZV9wcmltYXJ5X3ZlcnRpY2FsX2lkcyI6WzEwMDMyMiwxMDAzMzIsMTAwMzMzLDE3NywxNzgsMTgxLDE5MywxOTUsMjg0XX0=&amp;pickup=false" target="_blank" rel="noopener"><i class="fas fa-motorcycle"></i> DoorDash</a></li>
+            <li><a href="https://www.ubereats.com/store/al-sham-restaurant-1-philadelphia/1e8up_MiRG2QlYUYGpCrVw?diningMode=DELIVERY&amp;surfaceName=https://www.ubereats.com/store/al-sham-restaurant-2/W6rDxpqeTqaWyMvWP6rizg?diningMode=DELIVERY&amp;ps=1&amp;surfaceName=" target="_blank" rel="noopener"><i class="fa-brands fa-uber"></i> Uber Eats</a></li>
             <li><a href="#locations"><i class="fas fa-store"></i> In-Store Pickup</a></li>
           </ul>
         </div>
