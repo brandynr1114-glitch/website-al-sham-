@@ -548,6 +548,158 @@
     .cta-btn.outline:hover { background: rgba(255,255,255,0.15); }
 
     /* ============================================================
+       CONTACT
+       ============================================================ */
+    .contact {
+      padding: 5rem 0;
+      background: #FFFAF5;
+    }
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .contact-info h3 {
+      font-family: 'Lobster', cursive;
+      color: #F47B20;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .contact-info p {
+      font-size: 0.95rem;
+      color: #8a6e5e;
+      margin-bottom: 0.8rem;
+    }
+    .contact-info p i {
+      width: 22px;
+      color: #F47B20;
+      margin-right: 0.3rem;
+    }
+    .contact-form {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(93,58,41,0.06);
+    }
+    .contact-form .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .contact-form label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #5D3A29;
+      margin-bottom: 0.3rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #F47B20;
+    }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contact-form button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      background: #F47B20;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(244,123,32,0.3);
+    }
+    .contact-form button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(244,123,32,0.45);
+    }
+
+    /* ============================================================
+       HALAL CERTIFICATES
+       ============================================================ */
+    .halal-certs {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .halal-cert-thumb {
+      width: 70px;
+      height: 70px;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid rgba(244,123,32,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .halal-cert-thumb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(244,123,32,0.3);
+    }
+    .halal-cert-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ---- Certificate Modal ---- */
+    .cert-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .cert-modal.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .cert-modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    .cert-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+    .cert-modal-close:hover {
+      transform: scale(1.2);
+      color: #F47B20;
+    }
+
+    /* ============================================================
        FOOTER
        ============================================================ */
     .footer {
@@ -620,6 +772,7 @@
       .hero-image { margin-top: 2rem; }
       .hero-image-wrapper { width: 300px; height: 300px; }
       .about-grid { grid-template-columns: 1fr; }
+      .contact-wrapper { grid-template-columns: 1fr; }
       .locations-wrapper { grid-template-columns: 1fr; }
       .map-container iframe { min-height: 350px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -680,8 +833,10 @@
       </a>
       <nav class="nav-links" id="navLinks">
         <a href="#home">Home</a>
+        <a href="#about">About</a>
         <a href="#locations">Locations</a>
-        <a href="#menu">Menu</a>
+        <a href="https://ordersetups.com" target="_blank" rel="noopener">Menu</a>
+        <a href="#contact">Contact</a>
         <a href="#" class="btn-order">Order Online</a>
       </nav>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
@@ -803,30 +958,30 @@
       <h2 class="section-title reveal"><i class="fab fa-instagram"></i> Fresh from our Kitchen</h2>
       <p class="section-subtitle reveal">Follow us on Instagram @alshamphilly</p>
       <div class="gallery-grid">
-        <div class="gallery-item reveal">
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="gallery-item reveal">
           <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80" alt="Grilled kebabs" />
           <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
-        </div>
-        <div class="gallery-item reveal">
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="gallery-item reveal">
           <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Fresh baked flatbread" />
-          <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
-        </div>
-        <div class="gallery-item reveal">
+          <div class="gallery-overlay"><i class="fab fa-facebook-f"></i></div>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="gallery-item reveal">
           <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="Colorful mezze platter" />
           <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
-        </div>
-        <div class="gallery-item reveal">
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="gallery-item reveal">
           <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600&q=80" alt="Middle Eastern spices" />
-          <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
-        </div>
-        <div class="gallery-item reveal">
+          <div class="gallery-overlay"><i class="fab fa-facebook-f"></i></div>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="gallery-item reveal">
           <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="BBQ chicken" />
           <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
-        </div>
-        <div class="gallery-item reveal">
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="gallery-item reveal">
           <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=80" alt="Tea and dessert" />
-          <div class="gallery-overlay"><i class="fab fa-instagram"></i></div>
-        </div>
+          <div class="gallery-overlay"><i class="fab fa-facebook-f"></i></div>
+        </a>
       </div>
     </div>
   </section>
@@ -881,6 +1036,46 @@
     </div>
   </section>
 
+  <!-- ==================== CONTACT ==================== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title reveal">Get In Touch</h2>
+      <p class="section-subtitle reveal">We'd love to hear from you</p>
+      <div class="contact-wrapper reveal">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Serving 10 locations across the Philadelphia area</p>
+          <p><i class="fas fa-phone"></i> <a href="tel:+12155551234">(215) 555-1234</a> (Main Line)</p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:info@alshamfood.com">info@alshamfood.com</a></p>
+          <p><i class="fas fa-clock"></i> Open Daily: 10 AM – 11 PM (hours vary by location)</p>
+          <h3 style="margin-top: 2rem;">Follow Us</h3>
+          <p><i class="fab fa-instagram"></i> <a href="https://instagram.com" target="_blank" rel="noopener">@alshamphilly</a></p>
+          <p><i class="fab fa-facebook-f"></i> <a href="https://facebook.com" target="_blank" rel="noopener">AL-SHAM on Facebook</a></p>
+          <p><i class="fab fa-tiktok"></i> <a href="https://tiktok.com" target="_blank" rel="noopener">@alshamphilly</a></p>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent. We will get back to you soon.'); this.reset();">
+          <div class="form-group">
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName" name="name" placeholder="Enter your name" required />
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" name="email" placeholder="Enter your email" required />
+          </div>
+          <div class="form-group">
+            <label for="contactPhone">Phone Number</label>
+            <input type="tel" id="contactPhone" name="phone" placeholder="(optional)" />
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" placeholder="How can we help you?" required></textarea>
+          </div>
+          <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== CTA ==================== -->
   <section class="cta">
     <div class="container reveal">
@@ -911,8 +1106,10 @@
           <h3>Quick Links</h3>
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://ordersetups.com" target="_blank" rel="noopener">Menu</a></li>
             <li><a href="#locations">Locations</a></li>
+            <li><a href="#contact">Contact</a></li>
             <li><a href="#gallery">Gallery</a></li>
           </ul>
         </div>
@@ -929,7 +1126,21 @@
           <ul>
             <li><a href="mailto:info@alshamfood.com"><i class="fas fa-envelope"></i> info@alshamfood.com</a></li>
             <li><a href="tel:+12155551234"><i class="fas fa-phone"></i> (215) 555-1234</a></li>
+            <li><a href="mailto:careers@alshamfood.com"><i class="fas fa-briefcase"></i> Careers / Apply to Work</a></li>
           </ul>
+          <h3 style="margin-top: 1.5rem;">Halal Certified</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Click to view our certificates:</p>
+          <div class="halal-certs">
+            <div class="halal-cert-thumb" onclick="openCertModal('images/halal-cert-1.png')">
+              <img src="images/halal-cert-1.png" alt="Halal Certificate - HalalCo" />
+            </div>
+            <div class="halal-cert-thumb" onclick="openCertModal('images/halal-cert-2.png')">
+              <img src="images/halal-cert-2.png" alt="Halal Certificate - Senat Poultry" />
+            </div>
+            <div class="halal-cert-thumb" onclick="openCertModal('images/halal-cert-3.png')">
+              <img src="images/halal-cert-3.png" alt="Halal Certificate - ISA" />
+            </div>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -937,6 +1148,12 @@
       </div>
     </div>
   </footer>
+
+  <!-- ==================== CERTIFICATE MODAL ==================== -->
+  <div class="cert-modal" id="certModal">
+    <button class="cert-modal-close" onclick="closeCertModal()" aria-label="Close">&times;</button>
+    <img id="certModalImg" src="" alt="Halal Certificate" />
+  </div>
 
   <!-- ==================== JAVASCRIPT ==================== -->
   <script>
@@ -1013,6 +1230,23 @@
     }, { threshold: 0.15 });
 
     revealElements.forEach(el => observer.observe(el));
+
+    /* ---- Certificate Modal ---- */
+    function openCertModal(src) {
+      document.getElementById('certModalImg').src = src;
+      document.getElementById('certModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCertModal() {
+      document.getElementById('certModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('certModal').addEventListener('click', function(e) {
+      if (e.target === this) closeCertModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeCertModal();
+    });
   </script>
 </body>
 </html>
